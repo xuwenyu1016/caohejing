@@ -1,0 +1,49 @@
+<!--#include file="header.html"-->
+
+<img src="/public/lib/images/pc/41.png" class="am-img-responsive am-center" alt="{$categoryInfo.name}" />
+
+<div class="case-content">
+    <div class="am-container am-padding-vertical-xl">
+        <p class="am-margin-vertical-xs am-link-muted"><a href="__ROOT__/">首页</a><!--foreach{$crumb as $vo}--><span>&gt;</span><a href="{$vo.url}">{$vo.name}</a><!--{/foreach}--><span>&gt;</span><span>{$contentInfo.title}</span></p>
+
+        <ul class="am-avg-sm-2 am-margin-vertical-lg">
+            <li class="am-padding-right-sm">
+                <article class="am-padding-right-sm">
+                    <p>{$contentInfo.title}</p>
+
+                    <img src="{$contentInfo.picUpload}" class="am-img-responsive am-center am-margin-top-sm" alt="{$contentInfo.title}" />
+                </article>
+
+            </li>
+            <li class="am-padding-left-sm">
+                <article class="am-padding-top-xl">{$contentInfo.content}</article>
+
+            </li>
+        </ul>
+
+        <a href="/list-dianxinganli.html"> << 返回案例列表</a>
+    </div>
+</div>
+
+<div class="case-column am-padding-vertical-xl">
+    <div class="am-container">
+        <p>更多典型案例</p>
+
+        <ul class="am-avg-sm-4 am-margin-vertical-lg">
+            <!--list{app="Article" label="contentList" class_id=2 expand_id=4 limit="4"  }-->
+            <li>
+                <article>
+                    <a href="{$list.aurl}">
+                        <div style="background-image:url({$list.image});"></div>
+                        <p class="am-text-truncate">{$list.title}</p>
+                        <p><span>{$list.caseFilter['list'][$list.caseFilter['value'][0]] } | {$list.city}</span></p>
+                        <time pubdate datetime="{date('Y-m-d',$list.time)}">时间：{date('Y-m-d',$list.time)}</time>
+                    </a>
+                </article>
+            </li>
+            <!--{/list}-->
+        </ul>
+    </div>
+</div>
+
+<!--#include file="footer.html"-->

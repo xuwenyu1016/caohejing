@@ -1,0 +1,47 @@
+<!--#include file="header.html"-->
+
+<img src="/public/lib/images/pc/23.png" class="am-img-responsive am-center" alt="{$categoryInfo.name}" />
+
+<div class="news-list am-padding-vertical-xl">
+    <div class="am-container">
+        <p class="am-margin-vertical-xs am-link-muted"><a href="__ROOT__/">首页</a><!--foreach{$crumb as $vo}--><span>&gt;</span><a href="{$vo.url}">{$vo.name}</a><!--{/foreach}--></p>
+
+        <ul class="am-avg-sm-4 filter-box am-margin-top-lg">
+            <!--foreach{$condition as $vo}-->
+
+            <li class="select-all <!--if{$vo.value==="all"}-->  selected <!--{/if}--> ">
+                <a href="{$vo.url}" class="am-text-center">全部</a>
+            </li>
+            <!--foreach{$vo.config as $v}-->
+            <li <!--if{$v.value == $v.i}--> class="selected" <!--{/if}--> >
+                <a href="{$v.url}" class="am-text-center">{$v.name}</a>
+            </li>
+            <!--{/foreach}-->
+
+            <!--{/foreach}-->
+        </ul>
+
+        <section class="news-articles am-padding-top-lg">
+            <!--foreach{$pageList as $vo}-->
+            <article>
+                <a href="{$vo.aurl}">
+                    <img src="{$vo.image}" class="am-img-responsive" alt="{$vo.title}" />
+
+                    <div>
+                        <p>{$vo.title}</p>
+                        <time pubdate datetime="{date('Y-m-d H:i:s',$vo.time)}">{date('Y-m-d H:i:s',$vo.time)}</time>
+                        <p>{$vo.description}</p>
+                        <span>阅读全文>></span>
+                    </div>
+                </a>
+            </article>
+            <!--{/foreach}-->
+        </section>
+
+        <div class="pages">{$page}</div>
+
+    </div>
+
+</div>
+
+<!--#include file="footer.html"-->

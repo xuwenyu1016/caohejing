@@ -1,0 +1,24 @@
+<!--#include file="header.html"-->
+
+<img src="/public/lib/images/mobile/8.png" class="am-img-responsive am-center" alt="{$categoryInfo.name}" />
+
+<div class="services-lists am-padding-sm">
+    <p class="am-margin-vertical-xs am-link-muted am-text-xs"><a href="__ROOT__/">首页</a><!--foreach{$crumb as $vo}--><span>&gt;</span><a href="{$vo.url}">{$vo.name}</a><!--{/foreach}--></p>
+
+    <section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{ "multiple": true }'>
+        <!--foreach{$pageList as $vo}-->
+        <dl class="am-accordion-item">
+            <dt class="am-accordion-title">{$vo.title}</dt>
+            <dd class="am-accordion-bd am-collapse">
+                <div class="am-accordion-content">
+                    {$vo.servicesContent}
+                </div>
+            </dd>
+        </dl>
+        <!--{/foreach}-->
+
+    </section>
+</div>
+
+
+<!--#include file="footer.html"-->

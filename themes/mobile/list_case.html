@@ -1,0 +1,46 @@
+
+
+<!--#include file="header.html"-->
+
+<img src="/public/lib/images/mobile/8.png" class="am-img-responsive am-center" alt="{$categoryInfo.name}" />
+
+<div class="case-listing am-padding-sm">
+    <p class="am-margin-vertical-xs am-link-muted am-text-xs"><a href="__ROOT__/">首页</a><!--foreach{$crumb as $vo}--><span>&gt;</span><a href="{$vo.url}">{$vo.name}</a><!--{/foreach}--></p>
+
+    <ul class="am-avg-sm-5 filter-box am-margin-top-sm">
+        <!--foreach{$condition as $vo}-->
+
+        <li class="select-all <!--if{$vo.value==="all"}-->  selected <!--{/if}--> ">
+        <a href="{$vo.url}" class="am-text-center">全部</a>
+        </li>
+        <!--foreach{$vo.config as $v}-->
+        <li <!--if{$v.value == $v.i}--> class="selected" <!--{/if}--> >
+        <a href="{$v.url}" class="am-text-center">{$v.name}</a>
+        </li>
+        <!--{/foreach}-->
+
+        <!--{/foreach}-->
+    </ul>
+
+    <ul class="am-avg-sm-2 am-margin-top-sm case-gallery">
+        <!--foreach{$pageList as $vo}-->
+        <li>
+            <article style="background-image: url({$vo.image});">
+                <a href="{$vo.aurl}">
+                    <div>
+                        <p class="am-text-truncate">{$vo.title}</p>
+                        <p><span>{$vo.caseFilter['list'][$vo.caseFilter['value'][0]] } | {$vo.city}</span>
+                            <!--<time pubdate datetime="{date('Y-m-d',$vo.time)}">{date('Y-m-d',$vo.time)}</time>-->
+                        </p>
+                    </div>
+                </a>
+            </article>
+        </li>
+        <!--{/foreach}-->
+
+    </ul>
+
+    <div class="pages">{$page}</div>
+</div>
+
+<!--#include file="footer.html"-->

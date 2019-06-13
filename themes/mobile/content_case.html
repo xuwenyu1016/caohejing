@@ -1,0 +1,50 @@
+<!--#include file="header.html"-->
+
+<img src="/public/lib/images/mobile/13.png" class="am-img-responsive am-center" alt="{$categoryInfo.name}" />
+
+<div class="case-content am-padding-sm">
+    <p class="am-margin-vertical-xs am-link-muted am-text-xs"><a href="__ROOT__/">首页</a><!--foreach{$crumb as $vo}--><span>&gt;</span><a href="{$vo.url}">{$vo.name}</a><!--{/foreach}--><span>&gt;</span><span>{$contentInfo.title}</span></p>
+
+    <section class="am-margin-top-xs am-padding-bottom-xs">
+
+        <p class="am-text-default">{$contentInfo.title}</p>
+        
+        <img src="{$contentInfo.picUpload}" class="am-img-responsive am-center am-margin-top-sm" alt="{$contentInfo.title}" />
+
+        <div class="am-text-sm am-padding-top-xs case-article">{$contentInfo.content}</div>
+
+        <!--if{ $contentInfo['qrcode']  }-->
+        <img src="{$contentInfo.qrcode}" class="am-img-responsive am-center am-margin-top-sm qr-img" alt="{$contentInfo.title}" />
+        <p class="am-text-center am-margin-vertical-sm">扫码关注，了解更多园区详情</p>
+        <!--{else}-->
+
+        <!--{/if}-->
+
+        <p class="am-margin-vertical-sm am-padding-top-sm"><a href="/list-dianxinganli.html"> << 返回案例列表</a></p>
+
+    </section>
+
+</div>
+
+<div class="case-column am-padding-horizontal-sm">
+
+    <p class="am-margin-top-0 am-margin-bottom-sm">更多典型案例</p>
+
+    <ul class="am-avg-sm-2 am-margin-vertical-sm am-padding-bottom-sm">
+        <!--list{app="Article" label="contentList" class_id=2 expand_id=4 limit="2"  }-->
+        <li>
+            <article>
+                <a href="{$list.aurl}">
+                    <div style="background-image:url({$list.image});"></div>
+                    <p class="am-text-truncate">{$list.title}</p>
+                    <p><span>{$list.caseFilter['list'][$list.caseFilter['value'][0]] } | {$list.city}</span></p>
+                    <time pubdate datetime="{date('Y-m-d',$list.time)}">时间：{date('Y-m-d',$list.time)}</time>
+                </a>
+            </article>
+        </li>
+        <!--{/list}-->
+    </ul>
+
+</div>
+
+<!--#include file="footer.html"-->

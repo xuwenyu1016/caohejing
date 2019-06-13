@@ -1,0 +1,58 @@
+<!--#include file="header.html"-->
+
+<img src="/public/lib/images/pc/23.png" class="am-img-responsive am-center" alt="{$contentInfo.title}" />
+
+<div class="services-lists am-padding-vertical-xl" id="servicesList">
+    <div class="am-container">
+        <p class="am-margin-vertical-xs am-link-muted"><a href="__ROOT__/">首页</a><!--foreach{$crumb as $vo}--><span>&gt;</span><a>{$vo.name}</a><!--{/foreach}--></p>
+
+        <div class="am-tabs am-margin-top-lg">
+
+
+            <ul class="am-tabs-nav">
+                <!--list{app="DuxCms" label="contentList" class_id=4 limit="3"}-->
+                <li>
+                    <!--if{ $contentInfo['title'] ==  $list['title']  }-->
+                    <a href="{$list.aurl}#servicesList" class="active">{$list.title}</a>
+                    <!--{else}-->
+                    <a href="{$list.aurl}#servicesList">{$list.title}</a>
+                    <!--{/if}-->
+                </li>
+                <!--{/list}-->
+            </ul>
+
+            <section class="am-tabs-bd">
+
+                <div class="article-head">
+                    <p><img src="{$contentInfo.image}" alt="" />&emsp;{$contentInfo.title}</p>
+                    <img src="{$contentInfo.rightImage}" class="am-img-responsive" alt="" />
+                </div>
+
+                <article class="am-padding-top-lg">
+                    {$contentInfo.servicesContent}
+                </article>
+
+                <div class="services-gallery">
+                    <p><img src="/public/lib/images/pc/39.png" class="am-img-responsive" /> <span>案例展示</span></p>
+
+                    <!--list{app="DuxCms" label="contentList" class_id=2 limit="3"}-->
+                    <article>
+                        <a href="{$list.aurl}">
+                            <p><span class="am-text-truncate">{$list.title}</span> <?php $a = $list['keywords'];$arr = explode(',', $a); ?><?php foreach ($arr as $a): ?><span class="am-text-sm am-padding-xs am-margin-right-xs"><?=$a; ?></span><?php endforeach; ?></p>
+                            <time pubdate datetime="{date('Y-m-d',$list.time)}">时间：{date('Y-m-d',$list.time)}</time>
+                            <p class="am-text-truncate">{$list.description}</p>
+                        </a>
+                    </article>
+                    <!--{/list}-->
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--#include file="footer.html"-->
